@@ -1,20 +1,23 @@
-blockchain = [-1]
+blockchain = [[-1]]
 
 def get_last_blockchain_value():
     return blockchain[-1]
 
-def add_value(transaction_amount):
+def add_value(transaction_amount, last_transaction = blockchain[-1]):
     '''
     a chain of recursive blocks
     [1, [1, 2], [[1, 2] 3]]]
     '''
-    blockchain.append([get_last_blockchain_value(), transaction_amount])
+    blockchain.append([last_transaction, transaction_amount])
 
+tx_amount = int (input ("Your Transaction Amount Please? "))
+add_value(tx_amount)
 
-add_value(2)
-add_value(0.9)
-add_value(10)
+tx_amount = int (input ("Your Transaction Amount Please? "))
+add_value(last_transaction = get_last_blockchain_value(), transaction_amount=tx_amount)
+
+tx_amount = int (input ("Your Transaction Amount Please? "))
+add_value(tx_amount, get_last_blockchain_value())
 
 print (blockchain)
 
-# Lesson 25
